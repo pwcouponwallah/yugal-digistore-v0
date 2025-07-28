@@ -1,7 +1,7 @@
 // Yugal Digital Store - Google Apps Script Backend
 
 // Spreadsheet ID (replace with your actual spreadsheet ID)
-var SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID';
+var SPREADSHEET_ID = '1c1tdxzolOAn2fiTmFHPA6NvkLlnr_SRtKZxOVUUrTWA';
 
 // Sheet Names
 var SHEETS = {
