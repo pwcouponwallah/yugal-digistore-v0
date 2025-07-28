@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Yugal Digital Store - Homepage -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yugal Digital Store - Premium Digital Products</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <span class="text-emerald">Yugal</span> Digital Store
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item ms-lg-3 my-2 my-lg-0">
+                        <a class="btn btn-outline-emerald" href="dashboard.html">Seller Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient-emerald text-white py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h1 class="display-4 fw-bold mb-4">Discover Premium Digital Products</h1>
+                    <p class="lead mb-4">Instant downloads for eBooks, templates, guides and more. Handcrafted by talented creators worldwide.</p>
+                    <a href="products.html" class="btn btn-light btn-lg px-4 me-2">Browse Products</a>
+                    <a href="dashboard.html" class="btn btn-outline-light btn-lg px-4">Sell Your Work</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="assets/img/hero-bg.jpg" alt="Digital Products" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Carousel -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold">Featured Products</h2>
+                <a href="products.html" class="btn btn-sm btn-outline-emerald">View All</a>
+            </div>
+            <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row g-4">
+                            <!-- Product cards will be loaded via JavaScript -->
+                            <div class="col-md-4">
+                                <div class="card product-card skeleton">
+                                    <div class="card-img-top skeleton-img"></div>
+                                    <div class="card-body">
+                                        <h5 class="card-title skeleton-text"></h5>
+                                        <p class="card-text skeleton-text"></p>
+                                        <div class="skeleton-text"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Repeat skeleton cards -->
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-emerald rounded-circle" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-emerald rounded-circle" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">Popular Categories</h2>
+            <div class="row g-4">
+                <div class="col-6 col-md-3">
+                    <a href="products.html?category=eBooks" class="category-card text-decoration-none">
+                        <div class="card border-0 shadow-sm h-100 hover-lift">
+                            <div class="card-body text-center py-4">
+                                <i class="fas fa-book-open fa-3x text-emerald mb-3"></i>
+                                <h5 class="mb-0">eBooks</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="products.html?category=Templates" class="category-card text-decoration-none">
+                        <div class="card border-0 shadow-sm h-100 hover-lift">
+                            <div class="card-body text-center py-4">
+                                <i class="fas fa-file-alt fa-3x text-emerald mb-3"></i>
+                                <h5 class="mb-0">Templates</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="products.html?category=Guides" class="category-card text-decoration-none">
+                        <div class="card border-0 shadow-sm h-100 hover-lift">
+                            <div class="card-body text-center py-4">
+                                <i class="fas fa-map fa-3x text-emerald mb-3"></i>
+                                <h5 class="mb-0">Guides</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="products.html?category=Graphics" class="category-card text-decoration-none">
+                        <div class="card border-0 shadow-sm h-100 hover-lift">
+                            <div class="card-body text-center py-4">
+                                <i class="fas fa-palette fa-3x text-emerald mb-3"></i>
+                                <h5 class="mb-0">Graphics</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Products -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold">Trending Now</h2>
+                <a href="products.html" class="btn btn-sm btn-outline-emerald">View All</a>
+            </div>
+            <div class="row g-4" id="trendingProducts">
+                <!-- Product cards will be loaded via JavaScript -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card product-card skeleton">
+                        <div class="card-img-top skeleton-img"></div>
+                        <div class="card-body">
+                            <h5 class="card-title skeleton-text"></h5>
+                            <p class="card-text skeleton-text"></p>
+                            <div class="skeleton-text"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repeat skeleton cards -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-5 bg-emerald text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold mb-3">Get Exclusive Digital Products</h2>
+                    <p class="mb-4">Subscribe to our newsletter for new product alerts, discounts, and creator spotlights.</p>
+                    <form id="newsletterForm" class="row g-2 justify-content-center">
+                        <div class="col-md-8">
+                            <input type="email" class="form-control form-control-lg" placeholder="Your email address" required>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-light btn-lg w-100">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><span class="text-emerald">Yugal</span> Digital Store</h5>
+                    <p class="text-muted">Premium digital marketplace for creators and buyers. Instant downloads, secure payments.</p>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="fw-bold mb-3">Shop</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="products.html" class="text-muted text-decoration-none">All Products</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Categories</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Trending</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">New Arrivals</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="fw-bold mb-3">Sell</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="dashboard.html" class="text-muted text-decoration-none">Dashboard</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Become a Seller</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Pricing</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Seller Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Connect</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-muted"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-muted">© 2023 Yugal Digital Store. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <img src="https://via.placeholder.com/300x50?text=Secure+Payment+Methods" alt="Payment Methods" class="img-fluid" style="max-height: 30px;">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-emerald btn-lg back-to-top rounded-circle shadow" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
