@@ -1,7 +1,7 @@
 // Yugal Digital Store - Frontend JavaScript
 
 // Configuration
-const API_BASE_URL = 'https://script.google.com/macros/s/AKfycbyobgMhqKxgzWP6Wrzok6s0Oar80SIrMl2kdFt-vae8/exec'; // Replace with your deployed Apps Script URL
+const API_BASE_URL = 'https://script.google.com/macros/s/AKfycbxLoDr8PqIUHfoqYV2dd-YiYaDKKrR7-l0XZSxH-sIiZwvnpDKc1yG-5sFvLZ-Bxg3Z7g/exec'; // Replace with your deployed Apps Script URL
 let currentProductId = null;
 
 // Initialize the application
