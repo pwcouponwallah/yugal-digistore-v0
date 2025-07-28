@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Yugal Digital Store - Products Listing -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Digital Products | Yugal Digital Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation (same as index.html) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <!-- ... same as index.html ... -->
+    </nav>
+
+    <!-- Products Header -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="fw-bold mb-3">Digital Products</h1>
+                    <p class="text-muted mb-0">Browse our collection of premium digital downloads</p>
+                </div>
+                <div class="col-md-6 mt-3 mt-md-0">
+                    <div class="d-flex justify-content-md-end">
+                        <div class="dropdown me-2">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown">
+                                Sort by: Popular
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" data-sort="popular">Popular</a></li>
+                                <li><a class="dropdown-item" href="#" data-sort="newest">Newest</a></li>
+                                <li><a class="dropdown-item" href="#" data-sort="price-low">Price: Low to High</a></li>
+                                <li><a class="dropdown-item" href="#" data-sort="price-high">Price: High to Low</a></li>
+                                <li><a class="dropdown-item" href="#" data-sort="rating">Highest Rated</a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-secondary active" data-view="grid">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" data-view="list">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar Filters -->
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <div class="card border-0 shadow-sm sticky-top" style="top: 20px;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-4">Filters</h5>
+                            
+                            <!-- Search -->
+                            <div class="mb-4">
+                                <label for="searchInput" class="form-label">Search</label>
+                                <input type="text" class="form-control" id="searchInput" placeholder="Search products...">
+                            </div>
+                            
+                            <!-- Categories -->
+                            <div class="mb-4">
+                                <label class="form-label">Categories</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="eBooks" id="catEbooks">
+                                    <label class="form-check-label" for="catEbooks">eBooks</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Templates" id="catTemplates">
+                                    <label class="form-check-label" for="catTemplates">Templates</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Guides" id="catGuides">
+                                    <label class="form-check-label" for="catGuides">Guides</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Graphics" id="catGraphics">
+                                    <label class="form-check-label" for="catGraphics">Graphics</label>
+                                </div>
+                            </div>
+                            
+                            <!-- Price Range -->
+                            <div class="mb-4">
+                                <label class="form-label">Price Range</label>
+                                <div class="d-flex align-items-center mb-2">
+                                    <input type="number" class="form-control form-control-sm me-2" placeholder="Min" id="priceMin">
+                                    <span class="text-muted">to</span>
+                                    <input type="number" class="form-control form-control-sm ms-2" placeholder="Max" id="priceMax">
+                                </div>
+                                <button class="btn btn-sm btn-emerald w-100" id="applyFilters">Apply Filters</button>
+                            </div>
+                            
+                            <!-- Reset Filters -->
+                            <button class="btn btn-sm btn-outline-secondary w-100" id="resetFilters">Reset All</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Products Grid -->
+                <div class="col-lg-9">
+                    <div class="row g-4" id="productsGrid">
+                        <!-- Product cards will be loaded via JavaScript -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card product-card skeleton">
+                                <div class="card-img-top skeleton-img"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title skeleton-text"></h5>
+                                    <p class="card-text skeleton-text"></p>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Repeat skeleton cards (8-12) -->
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <nav class="mt-5" aria-label="Products pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="bg-dark text-white py-5">
+        <!-- ... same as index.html ... -->
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-emerald btn-lg back-to-top rounded-circle shadow">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
