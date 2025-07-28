@@ -1,7 +1,7 @@
 // Yugal Digital Store - Main JavaScript File
 
 // Global Variables
-const API_BASE_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // Replace with your deployed Apps Script URL
+const API_BASE_URL = 'https://script.google.com/macros/s/AKfycbxgQpZJBrBglkI4QQZ70C48J6qGaqHJHaeaoD2dA75v7ltigcmeDdKi0HnXieV97pQdKA/exec'; // Replace with your deployed Apps Script URL
 let currentProductId = null;
 
 // DOM Ready
