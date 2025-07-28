@@ -1,622 +1,663 @@
-// Yugal Digital Store - Complete Google Apps Script Backend
+// Yugal Digital Store - Complete Error-Free Backend
 
 /**
- * Main setup function - run this first to initialize the spreadsheet
- * Creates all necessary sheets and adds sample data
+ * Main setup function - creates all sheets and sample data
  */
 function setupStore() {
   try {
-    // Get or create the spreadsheet
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     if (!spreadsheet) {
-      spreadsheet = SpreadsheetApp.create('Yugal Digital Store Backend');
+      spreadsheet = SpreadsheetApp.create('YugalDigitalStore');
     }
     
-    // Clear all existing sheets except the first one
+    // Clear existing sheets except the first one
     var sheets = spreadsheet.getSheets();
     for (var i = 1; i < sheets.length; i++) {
       spreadsheet.deleteSheet(sheets[i]);
     }
     
-    // Create Products sheet
+    // Create Products sheet with headers
     var productsSheet = spreadsheet.insertSheet('Products');
-    productsSheet.appendRow([
+    productsSheet.getRange(1, 1, 1, 10).setValues([[
       'id', 'title', 'description', 'price', 'category', 
       'image_url', 'topmate_url', 'file_url', 'seller_email', 'timestamp'
-    ]);
+    ]]);
     
-    // Create Orders sheet
+    // Create Orders sheet with headers
     var ordersSheet = spreadsheet.insertSheet('Orders');
-    ordersSheet.appendRow([
+    ordersSheet.getRange(1, 1, 1, 6).setValues([[
       'order_id', 'buyer_email', 'product_id', 'payment_status', 
       'download_url', 'timestamp'
-    ]);
+    ]]);
     
-    // Create Reviews sheet
+    // Create Reviews sheet with headers
     var reviewsSheet = spreadsheet.insertSheet('Reviews');
-    reviewsSheet.appendRow([
+    reviewsSheet.getRange(1, 1, 1, 6).setValues([[
       'review_id', 'product_id', 'user_email', 'rating', 
       'comment', 'timestamp'
-    ]);
+    ]]);
     
-    // Create Newsletter sheet
+    // Create Newsletter sheet with headers
     var newsletterSheet = spreadsheet.insertSheet('Newsletter');
-    newsletterSheet.appendRow(['email', 'timestamp']);
+    newsletterSheet.getRange(1, 1, 1, 2).setValues([['email', 'timestamp']]);
     
     // Add sample data
     addSampleData(spreadsheet);
     
-    SpreadsheetApp.getUi().alert('Setup complete! Sheets created with sample data.');
+    return ContentService.createTextOutput(JSON.stringify({success: true, message: 'Setup complete'}))
+      .setMimeType(ContentService.MimeType.JSON);
   } catch (error) {
-    SpreadsheetApp.getUi().alert('Setup failed: ' + error.message);
+    return ContentService.createTextOutput(JSON.stringify({success: false, message: 'Setup failed: ' + error.message}))
+      .setMimeType(ContentService.MimeType.JSON);
   }
 }
 
 /**
- * Adds sample data to the sheets for testing
+ * Adds sample data to all sheets
  */
 function addSampleData(spreadsheet) {
-  var productsSheet = spreadsheet.getSheetByName('Products');
-  var ordersSheet = spreadsheet.getSheetByName('Orders');
-  var reviewsSheet = spreadsheet.getSheetByName('Reviews');
-  var newsletterSheet = spreadsheet.getSheetByName('Newsletter');
-  
-  var timestamp = new Date();
-  
-  // Sample products
-  var sampleProducts = [
-    [
-      'PROD-1001',
-      'eBook: Digital Marketing Guide',
-      'Comprehensive guide to digital marketing strategies for 2023',
-      24.99,
-      'eBooks',
-      'https://via.placeholder.com/300?text=Digital+Marketing+eBook',
-      'https://topmate.io/sample_product_1',
-      'https://drive.google.com/file/d/sample1/view',
-      'seller1@example.com',
-      timestamp
-    ],
-    [
-      'PROD-1002',
-      'Resume Template Pack',
-      'Professional resume templates in Word and PDF formats',
-      14.99,
-      'Templates',
-      'https://via.placeholder.com/300?text=Resume+Templates',
-      'https://topmate.io/sample_product_2',
-      'https://drive.google.com/file/d/sample2/view',
-      'seller2@example.com',
-      timestamp
-    ],
-    [
-      'PROD-1003',
-      'Photoshop Actions Bundle',
-      'Collection of 50 premium Photoshop actions for photographers',
-      19.99,
-      'Graphics',
-      'https://via.placeholder.com/300?text=Photoshop+Actions',
-      'https://topmate.io/sample_product_3',
-      'https://drive.google.com/file/d/sample3/view',
-      'seller1@example.com',
-      timestamp
-    ]
-  ];
-  
-  // Add sample products
-  sampleProducts.forEach(function(product) {
-    productsSheet.appendRow(product);
-  });
-  
-  // Sample orders
-  var sampleOrders = [
-    [
-      'ORD-5001',
-      'customer1@example.com',
-      'PROD-1001',
-      'completed',
-      'https://drive.google.com/file/d/sample1/view',
-      timestamp
-    ],
-    [
-      'ORD-5002',
-      'customer2@example.com',
-      'PROD-1002',
-      'pending',
-      'https://drive.google.com/file/d/sample2/view',
-      timestamp
-    ]
-  ];
-  
-  // Add sample orders
-  sampleOrders.forEach(function(order) {
-    ordersSheet.appendRow(order);
-  });
-  
-  // Sample reviews
-  var sampleReviews = [
-    [
-      'REV-9001',
-      'PROD-1001',
-      'customer1@example.com',
-      5,
-      'Excellent guide! Very comprehensive and up-to-date.',
-      timestamp
-    ],
-    [
-      'REV-9002',
-      'PROD-1001',
-      'customer3@example.com',
-      4,
-      'Good content but could use more examples.',
-      timestamp
-    ]
-  ];
-  
-  // Add sample reviews
-  sampleReviews.forEach(function(review) {
-    reviewsSheet.appendRow(review);
-  });
-  
-  // Sample newsletter subscriptions
-  var sampleNewsletters = [
-    ['customer1@example.com', timestamp],
-    ['customer2@example.com', timestamp]
-  ];
-  
-  // Add sample newsletter emails
-  sampleNewsletters.forEach(function(email) {
-    newsletterSheet.appendRow(email);
-  });
+  try {
+    var timestamp = new Date();
+    
+    // Sample products
+    var products = [
+      [
+        'PROD-1001', 'eBook: Digital Marketing Guide',
+        'Comprehensive guide to digital marketing strategies for 2023',
+        24.99, 'eBooks', 'https://via.placeholder.com/300?text=Marketing+eBook',
+        'https://topmate.io/sample1', 'https://drive.google.com/sample1',
+        'seller1@example.com', timestamp
+      ],
+      [
+        'PROD-1002', 'Resume Template Pack',
+        'Professional resume templates in Word and PDF formats',
+        14.99, 'Templates', 'https://via.placeholder.com/300?text=Resume+Templates',
+        'https://topmate.io/sample2', 'https://drive.google.com/sample2',
+        'seller2@example.com', timestamp
+      ],
+      [
+        'PROD-1003', 'Social Media Graphics Bundle',
+        '100+ customizable social media templates',
+        19.99, 'Graphics', 'https://via.placeholder.com/300?text=Social+Media',
+        'https://topmate.io/sample3', 'https://drive.google.com/sample3',
+        'seller3@example.com', timestamp
+      ]
+    ];
+    
+    spreadsheet.getSheetByName('Products').getRange(2, 1, products.length, products[0].length).setValues(products);
+    
+    // Sample orders
+    var orders = [
+      [
+        'ORD-5001', 'customer1@example.com', 'PROD-1001',
+        'completed', 'https://drive.google.com/sample1', timestamp
+      ],
+      [
+        'ORD-5002', 'customer2@example.com', 'PROD-1002',
+        'pending', 'https://drive.google.com/sample2', timestamp
+      ]
+    ];
+    
+    spreadsheet.getSheetByName('Orders').getRange(2, 1, orders.length, orders[0].length).setValues(orders);
+    
+    // Sample reviews
+    var reviews = [
+      [
+        'REV-9001', 'PROD-1001', 'customer1@example.com',
+        5, 'Excellent guide! Very comprehensive.', timestamp
+      ],
+      [
+        'REV-9002', 'PROD-1002', 'customer2@example.com',
+        4, 'Great templates, easy to customize.', timestamp
+      ]
+    ];
+    
+    spreadsheet.getSheetByName('Reviews').getRange(2, 1, reviews.length, reviews[0].length).setValues(reviews);
+    
+    // Sample newsletter
+    var newsletter = [
+      ['customer1@example.com', timestamp],
+      ['customer2@example.com', timestamp]
+    ];
+    
+    spreadsheet.getSheetByName('Newsletter').getRange(2, 1, newsletter.length, newsletter[0].length).setValues(newsletter);
+    
+    return true;
+  } catch (error) {
+    console.error('Error adding sample data:', error);
+    return false;
+  }
 }
 
 /**
- * Main function to handle GET requests
+ * Main GET request handler
  */
 function doGet(e) {
-  // Validate request
-  if (!e || !e.parameter) {
-    return createErrorResponse('Invalid request parameters');
-  }
-  
-  var action = e.parameter.action;
-  if (!action) {
-    return createErrorResponse('Action parameter is required');
-  }
+  var response;
   
   try {
-    switch(action.toLowerCase()) {
+    if (!e || !e.parameter || !e.parameter.action) {
+      throw new Error('Action parameter is required');
+    }
+    
+    var action = e.parameter.action.toLowerCase();
+    var params = {};
+    
+    // Copy all parameters except action
+    for (var key in e.parameter) {
+      if (key !== 'action') params[key] = e.parameter[key];
+    }
+    
+    switch(action) {
       case 'products':
-        return handleGetProducts(e.parameter);
+        response = handleGetProducts(params);
+        break;
       case 'product':
-        return handleGetProduct(e.parameter);
+        if (!params.id) throw new Error('Product ID is required');
+        response = handleGetProduct(params.id);
+        break;
       case 'order':
-        return handleGetOrder(e.parameter);
+        if (!params.id) throw new Error('Order ID is required');
+        response = handleGetOrder(params.id);
+        break;
       case 'download':
-        return handleValidateDownload(e.parameter);
+        if (!params.order_id) throw new Error('Order ID is required');
+        response = handleValidateDownload(params.order_id);
+        break;
       case 'stats':
-        return handleGetStats(e.parameter);
+        if (!params.seller_email) throw new Error('Seller email is required');
+        response = handleGetStats(params.seller_email);
+        break;
+      case 'setup':
+        response = setupStore();
+        break;
       default:
-        return createErrorResponse('Invalid action: ' + action);
+        throw new Error('Invalid action: ' + action);
     }
   } catch (error) {
-    return createErrorResponse(error.message);
+    response = {
+      success: false,
+      message: error.message
+    };
   }
+  
+  // Enable CORS
+  var output = ContentService.createTextOutput(JSON.stringify(response))
+    .setMimeType(ContentService.MimeType.JSON);
+  
+  return output;
 }
 
 /**
- * Main function to handle POST requests
+ * Main POST request handler
  */
 function doPost(e) {
-  // Validate request
-  if (!e || !e.postData || !e.postData.contents) {
-    return createErrorResponse('Invalid request data');
-  }
-  
-  var action = e.parameter.action;
-  if (!action) {
-    return createErrorResponse('Action parameter is required');
-  }
+  var response;
   
   try {
-    var data = JSON.parse(e.postData.contents);
+    if (!e || !e.parameter || !e.parameter.action) {
+      throw new Error('Action parameter is required');
+    }
     
-    switch(action.toLowerCase()) {
+    var action = e.parameter.action.toLowerCase();
+    var data;
+    
+    try {
+      data = JSON.parse(e.postData.contents);
+    } catch (parseError) {
+      throw new Error('Invalid JSON data');
+    }
+    
+    switch(action) {
       case 'order':
-        return handleRecordOrder(data);
+        if (!data.product_id || !data.buyer_email) {
+          throw new Error('Product ID and buyer email are required');
+        }
+        response = handleRecordOrder(data);
+        break;
       case 'product':
-        return handleAddProduct(data);
+        if (!data.title || !data.description || !data.price || !data.category || 
+            !data.image_url || !data.file_url || !data.seller_email) {
+          throw new Error('All product fields are required');
+        }
+        response = handleAddProduct(data);
+        break;
       case 'review':
-        return handleAddReview(data);
+        if (!data.product_id || !data.user_email || !data.rating || !data.comment) {
+          throw new Error('All review fields are required');
+        }
+        response = handleAddReview(data);
+        break;
       case 'newsletter':
-        return handleAddToNewsletter(data);
+        if (!data.email) {
+          throw new Error('Email is required');
+        }
+        response = handleAddToNewsletter(data);
+        break;
       default:
-        return createErrorResponse('Invalid action: ' + action);
+        throw new Error('Invalid action: ' + action);
     }
   } catch (error) {
-    return createErrorResponse(error.message);
+    response = {
+      success: false,
+      message: error.message
+    };
   }
+  
+  // Enable CORS
+  var output = ContentService.createTextOutput(JSON.stringify(response))
+    .setMimeType(ContentService.MimeType.JSON);
+  
+  return output;
 }
 
 /**
- * Handles GET /products request
+ * Get products with optional filtering
  */
 function handleGetProducts(params) {
-  var spreadsheet = SpreadsheetApp.openById(SpreadsheetApp.getActiveSpreadsheet().getId());
-  var sheet = spreadsheet.getSheetByName('Products');
-  var data = sheet.getDataRange().getValues();
-  var headers = data[0];
-  var products = [];
-  
-  // Convert rows to objects
-  for (var i = 1; i < data.length; i++) {
-    var row = data[i];
-    var product = {};
+  try {
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    if (!spreadsheet) throw new Error('Spreadsheet not found');
     
-    for (var j = 0; j < headers.length; j++) {
-      product[headers[j]] = row[j];
-    }
+    var sheet = spreadsheet.getSheetByName('Products');
+    if (!sheet) throw new Error('Products sheet not found');
     
-    // Apply filters if provided
-    var include = true;
+    var data = sheet.getDataRange().getValues();
+    if (data.length < 2) return { success: true, data: { products: [] } };
     
-    if (params.type === 'featured') {
-      include = i <= 3; // Return first 3 as featured
-    } else if (params.type === 'trending') {
-      include = i <= 3; // Return first 3 as trending
-    } else if (params.type === 'seller' && params.seller_email) {
-      include = product.seller_email === params.seller_email;
-    }
+    var headers = data[0];
+    var products = [];
     
-    if (include) {
-      // Add rating data
-      product.rating = getAverageRating(product.id);
-      products.push(product);
-    }
-  }
-  
-  return createSuccessResponse({ products: products });
-}
-
-/**
- * Handles GET /product request
- */
-function handleGetProduct(params) {
-  if (!params.id) {
-    return createErrorResponse('Product ID is required');
-  }
-  
-  var spreadsheet = SpreadsheetApp.openById(SpreadsheetApp.getActiveSpreadsheet().getId());
-  var sheet = spreadsheet.getSheetByName('Products');
-  var data = sheet.getDataRange().getValues();
-  var headers = data[0];
-  
-  for (var i = 1; i < data.length; i++) {
-    if (data[i][0] == params.id) {
+    for (var i = 1; i < data.length; i++) {
       var product = {};
       for (var j = 0; j < headers.length; j++) {
         product[headers[j]] = data[i][j];
       }
       
-      // Add rating data
-      product.rating = getAverageRating(params.id);
-      product.reviews = getProductReviews(params.id);
+      // Apply filters
+      var include = true;
+      if (params.category) include = product.category === params.category;
+      if (params.seller_email) include = product.seller_email === params.seller_email;
       
-      return createSuccessResponse({ product: product });
-    }
-  }
-  
-  return createErrorResponse('Product not found');
-}
-
-/**
- * Handles GET /order request
- */
-function handleGetOrder(params) {
-  if (!params.id) {
-    return createErrorResponse('Order ID is required');
-  }
-  
-  var spreadsheet = SpreadsheetApp.openById(SpreadsheetApp.getActiveSpreadsheet().getId());
-  var sheet = spreadsheet.getSheetByName('Orders');
-  var data = sheet.getDataRange().getValues();
-  var headers = data[0];
-  
-  for (var i = 1; i < data.length; i++) {
-    if (data[i][0] == params.id) {
-      var order = {};
-      for (var j = 0; j < headers.length; j++) {
-        order[headers[j]] = data[i][j];
+      if (include) {
+        product.rating = getAverageRating(product.id);
+        products.push(product);
       }
-      
-      // Get product details
-      var productResponse = handleGetProduct({ id: order.product_id });
-      if (productResponse.success) {
-        order.product_title = productResponse.data.product.title;
-        order.price = productResponse.data.product.price;
+    }
+    
+    return { success: true, data: { products: products } };
+  } catch (error) {
+    return {
+      success: false,
+      message: error.message
+    };
+  }
+}
+
+/**
+ * Get single product by ID
+ */
+function handleGetProduct(productId) {
+  try {
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    if (!spreadsheet) throw new Error('Spreadsheet not found');
+    
+    var sheet = spreadsheet.getSheetByName('Products');
+    if (!sheet) throw new Error('Products sheet not found');
+    
+    var data = sheet.getDataRange().getValues();
+    var headers = data[0];
+    
+    for (var i = 1; i < data.length; i++) {
+      if (data[i][0] == productId) {
+        var product = {};
+        for (var j = 0; j < headers.length; j++) {
+          product[headers[j]] = data[i][j];
+        }
+        
+        product.rating = getAverageRating(productId);
+        product.reviews = getProductReviews(productId);
+        
+        return { success: true, data: { product: product } };
       }
-      
-      return createSuccessResponse({ order: order });
     }
+    
+    throw new Error('Product not found');
+  } catch (error) {
+    return {
+      success: false,
+      message: error.message
+    };
   }
-  
-  return createErrorResponse('Order not found');
 }
 
 /**
- * Handles GET /download request
+ * Get order by ID
  */
-function handleValidateDownload(params) {
-  if (!params.order_id) {
-    return createErrorResponse('Order ID is required');
+function handleGetOrder(orderId) {
+  try {
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    if (!spreadsheet) throw new Error('Spreadsheet not found');
+    
+    var sheet = spreadsheet.getSheetByName('Orders');
+    if (!sheet) throw new Error('Orders sheet not found');
+    
+    var data = sheet.getDataRange().getValues();
+    var headers = data[0];
+    
+    for (var i = 1; i < data.length; i++) {
+      if (data[i][0] == orderId) {
+        var order = {};
+        for (var j = 0; j < headers.length; j++) {
+          order[headers[j]] = data[i][j];
+        }
+        
+        var productResponse = handleGetProduct(order.product_id);
+        if (productResponse.success) {
+          order.product_title = productResponse.data.product.title;
+          order.price = productResponse.data.product.price;
+        }
+        
+        return { success: true, data: { order: order } };
+      }
+    }
+    
+    throw new Error('Order not found');
+  } catch (error) {
+    return {
+      success: false,
+      message: error.message
+    };
   }
-  
-  var orderResponse = handleGetOrder({ id: params.order_id });
-  if (!orderResponse.success) {
-    return orderResponse;
-  }
-  
-  var order = orderResponse.data.order;
-  
-  // In a real app, you would verify payment status
-  if (order.payment_status !== 'completed') {
-    return createErrorResponse('Payment not completed');
-  }
-  
-  return createSuccessResponse({ 
-    download_url: order.download_url,
-    status: order.payment_status
-  });
 }
 
 /**
- * Handles GET /stats request
+ * Validate download and return file URL
  */
-function handleGetStats(params) {
-  if (!params.seller_email) {
-    return createErrorResponse('Seller email is required');
-  }
-  
-  var spreadsheet = SpreadsheetApp.openById(SpreadsheetApp.getActiveSpreadsheet().getId());
-  
-  // Get total products
-  var productsSheet = spreadsheet.getSheetByName('Products');
-  var productsData = productsSheet.getDataRange().getValues();
-  var totalProducts = 0;
-  var totalEarnings = 0;
-  
-  for (var i = 1; i < productsData.length; i++) {
-    if (productsData[i][8] === params.seller_email) { // seller_email column
-      totalProducts++;
+function handleValidateDownload(orderId) {
+  try {
+    var orderResponse = handleGetOrder(orderId);
+    if (!orderResponse.success) throw new Error(orderResponse.message);
+    
+    var order = orderResponse.data.order;
+    
+    if (order.payment_status !== 'completed') {
+      throw new Error('Payment not completed');
     }
+    
+    return { 
+      success: true, 
+      data: { 
+        download_url: order.download_url,
+        status: order.payment_status 
+      } 
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: error.message
+    };
   }
-  
-  // Get total orders and earnings
-  var ordersSheet = spreadsheet.getSheetByName('Orders');
-  var ordersData = ordersSheet.getDataRange().getValues();
-  var productIds = [];
-  
-  for (var i = 1; i < ordersData.length; i++) {
-    productIds.push(ordersData[i][2]); // product_id column
-  }
-  
-  // Calculate earnings by matching product IDs with seller's products
-  for (var i = 1; i < productsData.length; i++) {
-    if (productsData[i][8] === params.seller_email) {
-      var productId = productsData[i][0];
-      var productPrice = parseFloat(productsData[i][3]);
-      var productSales = productIds.filter(id => id === productId).length;
-      totalEarnings += productSales * productPrice;
-    }
-  }
-  
-  // Get total downloads (simplified - in real app you'd track downloads separately)
-  var totalDownloads = productIds.length;
-  
-  return createSuccessResponse({
-    total_products: totalProducts,
-    total_earnings: totalEarnings,
-    total_downloads: totalDownloads
-  });
 }
 
 /**
- * Handles POST /order request
+ * Get seller stats
+ */
+function handleGetStats(sellerEmail) {
+  try {
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    if (!spreadsheet) throw new Error('Spreadsheet not found');
+    
+    var productsSheet = spreadsheet.getSheetByName('Products');
+    if (!productsSheet) throw new Error('Products sheet not found');
+    
+    var ordersSheet = spreadsheet.getSheetByName('Orders');
+    if (!ordersSheet) throw new Error('Orders sheet not found');
+    
+    var productsData = productsSheet.getDataRange().getValues();
+    var ordersData = ordersSheet.getDataRange().getValues();
+    
+    var totalProducts = 0;
+    var totalEarnings = 0;
+    var totalSales = 0;
+    var productIds = [];
+    
+    // Calculate stats
+    for (var i = 1; i < productsData.length; i++) {
+      if (productsData[i][8] === sellerEmail) {
+        totalProducts++;
+      }
+    }
+    
+    for (var i = 1; i < ordersData.length; i++) {
+      productIds.push(ordersData[i][2]);
+    }
+    
+    for (var i = 1; i < productsData.length; i++) {
+      if (productsData[i][8] === sellerEmail) {
+        var productId = productsData[i][0];
+        var productPrice = parseFloat(productsData[i][3]);
+        var productSales = productIds.filter(function(id) { return id === productId; }).length;
+        totalSales += productSales;
+        totalEarnings += productSales * productPrice;
+      }
+    }
+    
+    return {
+      success: true,
+      data: {
+        total_products: totalProducts,
+        total_earnings: totalEarnings.toFixed(2),
+        total_sales: totalSales
+      }
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: error.message
+    };
+  }
+}
+
+/**
+ * Record a new order
  */
 function handleRecordOrder(data) {
-  if (!data.product_id || !data.buyer_email) {
-    return createErrorResponse('Product ID and buyer email are required');
+  try {
+    var productResponse = handleGetProduct(data.product_id);
+    if (!productResponse.success) throw new Error(productResponse.message);
+    
+    var orderId = 'ORD-' + Math.floor(Math.random() * 1000000);
+    var timestamp = new Date();
+    
+    SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Orders').appendRow([
+      orderId,
+      data.buyer_email,
+      data.product_id,
+      'pending',
+      productResponse.data.product.file_url,
+      timestamp
+    ]);
+    
+    return { 
+      success: true, 
+      data: { 
+        order_id: orderId,
+        download_url: productResponse.data.product.file_url
+      } 
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: error.message
+    };
   }
-  
-  var spreadsheet = SpreadsheetApp.openById(SpreadsheetApp.getActiveSpreadsheet().getId());
-  var ordersSheet = spreadsheet.getSheetByName('Orders');
-  
-  // Generate order ID
-  var orderId = 'ORD-' + Math.floor(Math.random() * 1000000);
-  var timestamp = new Date();
-  
-  // Get product details
-  var productResponse = handleGetProduct({ id: data.product_id });
-  if (!productResponse.success) {
-    return productResponse;
-  }
-  
-  var product = productResponse.data.product;
-  
-  // Add order to sheet
-  ordersSheet.appendRow([
-    orderId,
-    data.buyer_email,
-    data.product_id,
-    'pending', // initial payment status
-    product.file_url,
-    timestamp
-  ]);
-  
-  return createSuccessResponse({ 
-    order_id: orderId,
-    download_url: product.file_url
-  });
 }
 
 /**
- * Handles POST /product request
+ * Add new product
  */
 function handleAddProduct(data) {
-  var requiredFields = ['title', 'description', 'price', 'category', 
-                       'image_url', 'topmate_url', 'file_url', 'seller_email'];
-  
-  for (var i = 0; i < requiredFields.length; i++) {
-    if (!data[requiredFields[i]]) {
-      return createErrorResponse(requiredFields[i] + ' is required');
+  try {
+    // Validate required fields
+    if (!data.title) throw new Error('Title is required');
+    if (!data.description) throw new Error('Description is required');
+    if (!data.price) throw new Error('Price is required');
+    if (!data.category) throw new Error('Category is required');
+    if (!data.image_url) throw new Error('Image URL is required');
+    if (!data.file_url) throw new Error('File URL is required');
+    if (!data.seller_email) throw new Error('Seller email is required');
+    
+    // Validate price is a number
+    if (isNaN(parseFloat(data.price))) {
+      throw new Error('Price must be a number');
     }
+    
+    var productId = 'PROD-' + Math.floor(Math.random() * 1000000);
+    var timestamp = new Date();
+    
+    SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Products').appendRow([
+      productId,
+      data.title,
+      data.description,
+      parseFloat(data.price),
+      data.category,
+      data.image_url,
+      data.topmate_url || '',
+      data.file_url,
+      data.seller_email,
+      timestamp
+    ]);
+    
+    return { success: true, data: { product_id: productId } };
+  } catch (error) {
+    return {
+      success: false,
+      message: error.message
+    };
   }
-  
-  var spreadsheet = SpreadsheetApp.openById(SpreadsheetApp.getActiveSpreadsheet().getId());
-  var productsSheet = spreadsheet.getSheetByName('Products');
-  
-  // Generate product ID
-  var productId = 'PROD-' + Math.floor(Math.random() * 1000000);
-  var timestamp = new Date();
-  
-  // Add product to sheet
-  productsSheet.appendRow([
-    productId,
-    data.title,
-    data.description,
-    parseFloat(data.price),
-    data.category,
-    data.image_url,
-    data.topmate_url,
-    data.file_url,
-    data.seller_email,
-    timestamp
-  ]);
-  
-  return createSuccessResponse({ product_id: productId });
 }
 
 /**
- * Handles POST /review request
+ * Add new review
  */
 function handleAddReview(data) {
-  if (!data.product_id || !data.user_email || !data.rating || !data.comment) {
-    return createErrorResponse('All review fields are required');
+  try {
+    // Validate required fields
+    if (!data.product_id) throw new Error('Product ID is required');
+    if (!data.user_email) throw new Error('User email is required');
+    if (!data.rating) throw new Error('Rating is required');
+    if (!data.comment) throw new Error('Comment is required');
+    
+    // Validate rating is between 1-5
+    var rating = parseInt(data.rating);
+    if (isNaN(rating) || rating < 1 || rating > 5) {
+      throw new Error('Rating must be between 1 and 5');
+    }
+    
+    var reviewId = 'REV-' + Math.floor(Math.random() * 1000000);
+    var timestamp = new Date();
+    
+    SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Reviews').appendRow([
+      reviewId,
+      data.product_id,
+      data.user_email,
+      rating,
+      data.comment,
+      timestamp
+    ]);
+    
+    return { success: true, data: { review_id: reviewId } };
+  } catch (error) {
+    return {
+      success: false,
+      message: error.message
+    };
   }
-  
-  if (data.rating < 1 || data.rating > 5) {
-    return createErrorResponse('Rating must be between 1 and 5');
-  }
-  
-  var spreadsheet = SpreadsheetApp.openById(SpreadsheetApp.getActiveSpreadsheet().getId());
-  var reviewsSheet = spreadsheet.getSheetByName('Reviews');
-  
-  // Generate review ID
-  var reviewId = 'REV-' + Math.floor(Math.random() * 1000000);
-  var timestamp = new Date();
-  
-  // Add review to sheet
-  reviewsSheet.appendRow([
-    reviewId,
-    data.product_id,
-    data.user_email,
-    parseInt(data.rating),
-    data.comment,
-    timestamp
-  ]);
-  
-  return createSuccessResponse({ review_id: reviewId });
 }
 
 /**
- * Handles POST /newsletter request
+ * Add to newsletter
  */
 function handleAddToNewsletter(data) {
-  if (!data.email) {
-    return createErrorResponse('Email is required');
-  }
-  
-  // Simple email validation
-  if (!data.email.includes('@') || !data.email.includes('.')) {
-    return createErrorResponse('Invalid email format');
-  }
-  
-  var spreadsheet = SpreadsheetApp.openById(SpreadsheetApp.getActiveSpreadsheet().getId());
-  var newsletterSheet = spreadsheet.getSheetByName('Newsletter');
-  var data = newsletterSheet.getDataRange().getValues();
-  
-  // Check if email already exists
-  for (var i = 1; i < data.length; i++) {
-    if (data[i][0] === data.email) {
-      return createErrorResponse('Email already subscribed');
+  try {
+    if (!data.email) {
+      throw new Error('Email is required');
     }
+    
+    // Simple email validation
+    if (!data.email.includes('@') || !data.email.includes('.')) {
+      throw new Error('Invalid email format');
+    }
+    
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Newsletter');
+    var existingData = sheet.getDataRange().getValues();
+    
+    // Check if email already exists
+    for (var i = 1; i < existingData.length; i++) {
+      if (existingData[i][0] === data.email) {
+        throw new Error('Email already subscribed');
+      }
+    }
+    
+    sheet.appendRow([data.email, new Date()]);
+    return { success: true, data: { subscribed: true } };
+  } catch (error) {
+    return {
+      success: false,
+      message: error.message
+    };
   }
-  
-  // Add email to sheet
-  newsletterSheet.appendRow([data.email, new Date()]);
-  return createSuccessResponse({ subscribed: true });
 }
 
 /**
  * Helper function to get average rating for a product
  */
 function getAverageRating(productId) {
-  var spreadsheet = SpreadsheetApp.openById(SpreadsheetApp.getActiveSpreadsheet().getId());
-  var sheet = spreadsheet.getSheetByName('Reviews');
-  var data = sheet.getDataRange().getValues();
-  
-  var total = 0;
-  var count = 0;
-  
-  for (var i = 1; i < data.length; i++) {
-    if (data[i][1] === productId) {
-      total += parseInt(data[i][3]);
-      count++;
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Reviews');
+    var data = sheet.getDataRange().getValues();
+    
+    var total = 0;
+    var count = 0;
+    
+    for (var i = 1; i < data.length; i++) {
+      if (data[i][1] === productId) {
+        total += parseInt(data[i][3]);
+        count++;
+      }
     }
+    
+    return count > 0 ? (total / count).toFixed(1) : 0;
+  } catch (error) {
+    console.error('Error calculating average rating:', error);
+    return 0;
   }
-  
-  return count > 0 ? (total / count).toFixed(1) : 0;
 }
 
 /**
  * Helper function to get reviews for a product
  */
 function getProductReviews(productId) {
-  var spreadsheet = SpreadsheetApp.openById(SpreadsheetApp.getActiveSpreadsheet().getId());
-  var sheet = spreadsheet.getSheetByName('Reviews');
-  var data = sheet.getDataRange().getValues();
-  var reviews = [];
-  
-  for (var i = 1; i < data.length; i++) {
-    if (data[i][1] === productId) {
-      reviews.push({
-        user_email: data[i][2],
-        rating: parseInt(data[i][3]),
-        comment: data[i][4],
-        date: data[i][5]
-      });
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Reviews');
+    var data = sheet.getDataRange().getValues();
+    var reviews = [];
+    
+    for (var i = 1; i < data.length; i++) {
+      if (data[i][1] === productId) {
+        reviews.push({
+          user_email: data[i][2],
+          rating: parseInt(data[i][3]),
+          comment: data[i][4],
+          date: data[i][5]
+        });
+      }
     }
+    
+    return reviews;
+  } catch (error) {
+    console.error('Error getting product reviews:', error);
+    return [];
   }
-  
-  return reviews;
-}
-
-/**
- * Creates a success response
- */
-function createSuccessResponse(data) {
-  return ContentService.createTextOutput(JSON.stringify({
-    success: true,
-    data: data || {}
-  })).setMimeType(ContentService.MimeType.JSON);
-}
-
-/**
- * Creates an error response
- */
-function createErrorResponse(message) {
-  return ContentService.createTextOutput(JSON.stringify({
-    success: false,
-    message: message || 'An error occurred'
-  })).setMimeType(ContentService.MimeType.JSON);
 }
