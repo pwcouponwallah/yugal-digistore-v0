@@ -308,7 +308,7 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row g-4 flex-nowrap overflow-hidden" id="featuredProductsContainer">
-                            <!-- Skeleton loading cards will be added here by JavaScript -->
+                            <!-- Product cards will be loaded via JavaScript -->
                             <div class="col-md-4 col-lg-3">
                                 <div class="card product-card skeleton h-100">
                                     <div class="card-img-top skeleton-img"></div>
@@ -368,68 +368,39 @@
     <section id="categories" class="py-5">
         <div class="container">
             <h2 class="text-center fw-bold mb-5">Popular Categories</h2>
-            <div class="row g-4">
+            <div class="row g-4" id="categoriesContainer">
+                <!-- Categories will be loaded via JavaScript -->
                 <div class="col-6 col-md-3">
-                    <a href="products.html?category=eBooks" class="category-card text-decoration-none">
-                        <div class="card border-0 shadow-sm h-100 hover-lift">
-                            <div class="card-body text-center py-4">
-                                <i class="fas fa-book-open fa-3x text-emerald mb-3"></i>
-                                <h5 class="mb-0">eBooks</h5>
-                                <p class="text-muted mb-0 small">120+ titles</p>
-                            </div>
+                    <div class="card border-0 shadow-sm h-100 hover-lift skeleton">
+                        <div class="card-body text-center py-4">
+                            <div class="skeleton-img" style="width: 48px; height: 48px; margin: 0 auto 1rem;"></div>
+                            <h5 class="mb-0 skeleton-text" style="width: 80%; margin: 0 auto;"></h5>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 <div class="col-6 col-md-3">
-                    <a href="products.html?category=Templates" class="category-card text-decoration-none">
-                        <div class="card border-0 shadow-sm h-100 hover-lift">
-                            <div class="card-body text-center py-4">
-                                <i class="fas fa-file-alt fa-3x text-emerald mb-3"></i>
-                                <h5 class="mb-0">Templates</h5>
-                                <p class="text-muted mb-0 small">350+ designs</p>
-                            </div>
+                    <div class="card border-0 shadow-sm h-100 hover-lift skeleton">
+                        <div class="card-body text-center py-4">
+                            <div class="skeleton-img" style="width: 48px; height: 48px; margin: 0 auto 1rem;"></div>
+                            <h5 class="mb-0 skeleton-text" style="width: 80%; margin: 0 auto;"></h5>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 <div class="col-6 col-md-3">
-                    <a href="products.html?category=Guides" class="category-card text-decoration-none">
-                        <div class="card border-0 shadow-sm h-100 hover-lift">
-                            <div class="card-body text-center py-4">
-                                <i class="fas fa-map fa-3x text-emerald mb-3"></i>
-                                <h5 class="mb-0">Guides</h5>
-                                <p class="text-muted mb-0 small">85+ resources</p>
-                            </div>
+                    <div class="card border-0 shadow-sm h-100 hover-lift skeleton">
+                        <div class="card-body text-center py-4">
+                            <div class="skeleton-img" style="width: 48px; height: 48px; margin: 0 auto 1rem;"></div>
+                            <h5 class="mb-0 skeleton-text" style="width: 80%; margin: 0 auto;"></h5>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 <div class="col-6 col-md-3">
-                    <a href="products.html?category=Graphics" class="category-card text-decoration-none">
-                        <div class="card border-0 shadow-sm h-100 hover-lift">
-                            <div class="card-body text-center py-4">
-                                <i class="fas fa-palette fa-3x text-emerald mb-3"></i>
-                                <h5 class="mb-0">Graphics</h5>
-                                <p class="text-muted mb-0 small">500+ assets</p>
-                            </div>
+                    <div class="card border-0 shadow-sm h-100 hover-lift skeleton">
+                        <div class="card-body text-center py-4">
+                            <div class="skeleton-img" style="width: 48px; height: 48px; margin: 0 auto 1rem;"></div>
+                            <h5 class="mb-0 skeleton-text" style="width: 80%; margin: 0 auto;"></h5>
                         </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-5 bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="About Yugal Digital Store" class="img-fluid rounded-3 shadow">
-                </div>
-                <div class="col-lg-6">
-                    <h2 class="fw-bold mb-4">About Yugal Digital Store</h2>
-                    <p class="lead mb-4">We connect talented creators with customers who value quality digital products.</p>
-                    <p>Founded in 2023, Yugal Digital Store has grown to become a trusted marketplace for premium digital goods. Our platform offers instant downloads, secure payments, and a seamless shopping experience.</p>
-                    <p>Whether you're looking to enhance your skills with an eBook, streamline your work with templates, or find creative assets for your projects, we've got you covered.</p>
-                    <a href="#" class="btn btn-emerald mt-3">Learn More About Us</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -443,7 +414,7 @@
                 <a href="products.html" class="btn btn-sm btn-outline-emerald">View All</a>
             </div>
             <div class="row g-4" id="trendingProducts">
-                <!-- Skeleton loading cards will be added here by JavaScript -->
+                <!-- Product cards will be loaded via JavaScript -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card product-card skeleton h-100">
                         <div class="card-img-top skeleton-img"></div>
@@ -598,10 +569,9 @@
                     <h6 class="fw-bold mb-3">Shop</h6>
                     <ul class="list-unstyled">
                         <li class="mb-2"><a href="products.html" class="text-white text-decoration-none">All Products</a></li>
-                        <li class="mb-2"><a href="products.html?category=eBooks" class="text-white text-decoration-none">eBooks</a></li>
-                        <li class="mb-2"><a href="products.html?category=Templates" class="text-white text-decoration-none">Templates</a></li>
-                        <li class="mb-2"><a href="products.html?category=Guides" class="text-white text-decoration-none">Guides</a></li>
-                        <li class="mb-2"><a href="products.html?category=Graphics" class="text-white text-decoration-none">Graphics</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Categories</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Trending</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">New Arrivals</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
@@ -611,7 +581,6 @@
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">Careers</a></li>
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">Blog</a></li>
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">Press</a></li>
-                        <li class="mb-2"><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
@@ -621,7 +590,6 @@
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">FAQs</a></li>
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">Shipping</a></li>
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">Returns</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Order Status</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2">
@@ -630,14 +598,13 @@
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">Terms of Service</a></li>
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">Cookie Policy</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">GDPR</a></li>
                     </ul>
                 </div>
             </div>
             <hr class="my-4 bg-secondary">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0 text-white-50">© 2025 Yugal Digital Store. All rights reserved.</p>
+                    <p class="mb-0 text-white-50">© 2023 Yugal Digital Store. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <img src="https://www.hostagle.com/wp-content/uploads/2022/12/payments-removebg-preview.png" alt="Payment Methods" class="img-fluid" style="max-height: 30px;">
@@ -695,159 +662,57 @@
                 });
             });
 
-            // Load products dynamically
-            function loadProducts() {
-                // Sample product data - in a real app, this would come from an API
-                const featuredProducts = [
-                    {
-                        id: 1,
-                        title: "Digital Marketing Mastery",
-                        description: "Comprehensive guide to modern digital marketing strategies",
-                        price: 29.99,
-                        rating: 4.5,
-                        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-                        category: "eBooks"
-                    },
-                    {
-                        id: 2,
-                        title: "Professional Resume Pack",
-                        description: "50+ customizable resume templates for all industries",
-                        price: 19.99,
-                        rating: 4,
-                        image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                        category: "Templates"
-                    },
-                    {
-                        id: 3,
-                        title: "Excel Finance Dashboard",
-                        description: "Complete financial tracking system with automated reports",
-                        price: 24.99,
-                        rating: 5,
-                        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
-                        category: "Templates"
-                    },
-                    {
-                        id: 4,
-                        title: "Modern UI Kit",
-                        description: "300+ components for Figma, Sketch and Adobe XD",
-                        price: 39.99,
-                        rating: 4.5,
-                        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                        category: "Graphics"
-                    }
-                ];
-
-                const trendingProducts = [
-                    {
-                        id: 5,
-                        title: "Notion Life OS",
-                        description: "All-in-one productivity system for Notion",
-                        price: 34.99,
-                        rating: 5,
-                        image: "https://images.unsplash.com/photo-1545239351-ef35f43d514b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-                        category: "Templates"
-                    },
-                    {
-                        id: 6,
-                        title: "Social Media Content Pack",
-                        description: "500+ Canva templates for social media",
-                        price: 29.99,
-                        rating: 4.5,
-                        image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1336&q=80",
-                        category: "Graphics"
-                    },
-                    {
-                        id: 7,
-                        title: "Python Programming Course",
-                        description: "From beginner to advanced Python skills",
-                        price: 49.99,
-                        rating: 4,
-                        image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                        category: "Guides"
-                    },
-                    {
-                        id: 8,
-                        title: "Minimal Logo Pack",
-                        description: "150+ editable logo templates in vector format",
-                        price: 39.99,
-                        rating: 5,
-                        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
-                        category: "Graphics"
-                    }
-                ];
-
-                // Render featured products
-                const featuredContainer = document.getElementById('featuredProductsContainer');
-                featuredContainer.innerHTML = ''; // Clear skeleton loading
-                
-                featuredProducts.forEach(product => {
-                    featuredContainer.innerHTML += `
-                        <div class="col-md-4 col-lg-3">
-                            <div class="card product-card h-100">
-                                <img src="${product.image}" class="card-img-top" alt="${product.title}">
-                                <div class="card-body">
-                                    <h5 class="card-title">${product.title}</h5>
-                                    <p class="card-text text-muted">${product.description}</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="fw-bold text-emerald">$${product.price.toFixed(2)}</span>
-                                        <div class="ratings">
-                                            ${renderRatingStars(product.rating)}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-
-                // Render trending products
-                const trendingContainer = document.getElementById('trendingProducts');
-                trendingContainer.innerHTML = ''; // Clear skeleton loading
-                
-                trendingProducts.forEach(product => {
-                    trendingContainer.innerHTML += `
-                        <div class="col-md-6 col-lg-3">
-                            <div class="card product-card h-100">
-                                <img src="${product.image}" class="card-img-top" alt="${product.title}">
-                                <div class="card-body">
-                                    <h5 class="card-title">${product.title}</h5>
-                                    <p class="card-text text-muted">${product.description}</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="fw-bold text-emerald">$${product.price.toFixed(2)}</span>
-                                        <div class="ratings">
-                                            ${renderRatingStars(product.rating)}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
+            // Load products and categories dynamically
+            function loadContent() {
+                // In a real app, you would fetch this data from an API
+                // For now, we'll just simulate loading with a timeout
+                setTimeout(() => {
+                    loadProducts();
+                    loadCategories();
+                }, 1000);
             }
 
-            // Helper function to render rating stars
-            function renderRatingStars(rating) {
-                let stars = '';
-                const fullStars = Math.floor(rating);
-                const hasHalfStar = rating % 1 >= 0.5;
+            function loadProducts() {
+                // Featured products container
+                const featuredContainer = document.getElementById('featuredProductsContainer');
+                // Trending products container
+                const trendingContainer = document.getElementById('trendingProducts');
                 
-                // Full stars
-                for (let i = 0; i < fullStars; i++) {
-                    stars += '<i class="fas fa-star"></i>';
-                }
+                // Clear skeleton loading
+                featuredContainer.innerHTML = '';
+                trendingContainer.innerHTML = '';
                 
-                // Half star
-                if (hasHalfStar) {
-                    stars += '<i class="fas fa-star-half-alt"></i>';
-                }
+                // In a real app, you would fetch products from your API
+                // For now, we'll just show empty containers
+                featuredContainer.innerHTML = `
+                    <div class="col-12 text-center py-4">
+                        <p>No featured products available at the moment.</p>
+                        <a href="products.html" class="btn btn-emerald">Browse All Products</a>
+                    </div>
+                `;
                 
-                // Empty stars
-                const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-                for (let i = 0; i < emptyStars; i++) {
-                    stars += '<i class="far fa-star"></i>';
-                }
+                trendingContainer.innerHTML = `
+                    <div class="col-12 text-center py-4">
+                        <p>No trending products available at the moment.</p>
+                        <a href="products.html" class="btn btn-emerald">Browse All Products</a>
+                    </div>
+                `;
+            }
+
+            function loadCategories() {
+                const categoriesContainer = document.getElementById('categoriesContainer');
                 
-                return stars;
+                // Clear skeleton loading
+                categoriesContainer.innerHTML = '';
+                
+                // In a real app, you would fetch categories from your API
+                // For now, we'll just show empty containers
+                categoriesContainer.innerHTML = `
+                    <div class="col-12 text-center py-4">
+                        <p>No categories available at the moment.</p>
+                        <a href="products.html" class="btn btn-emerald">Browse All Products</a>
+                    </div>
+                `;
             }
 
             // Newsletter form submission
@@ -862,8 +727,8 @@
                 });
             }
 
-            // Simulate loading products after a short delay
-            setTimeout(loadProducts, 1000);
+            // Start loading content
+            loadContent();
         });
     </script>
 </body>
