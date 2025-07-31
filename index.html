@@ -9,14 +9,255 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="assets/css/main.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Yugal Digital Store - Main CSS File */
+        :root {
+            --emerald: #10b981;
+            --emerald-dark: #0d9e6e;
+            --violet: #7c3aed;
+            --gray-light: #f5f5f5;
+            --gray-dark: #333333;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--gray-dark);
+            background-color: #f9fafb;
+            padding-top: 72px; /* For fixed navbar */
+        }
+
+        /* Text Colors */
+        .text-emerald {
+            color: var(--emerald);
+        }
+
+        /* Background Colors */
+        .bg-emerald {
+            background-color: var(--emerald);
+        }
+
+        .bg-gradient-emerald {
+            background: linear-gradient(135deg, var(--emerald), var(--violet));
+        }
+
+        .bg-light {
+            background-color: var(--gray-light);
+        }
+
+        /* Buttons */
+        .btn-emerald {
+            background-color: var(--emerald);
+            border-color: var(--emerald);
+            color: white;
+        }
+
+        .btn-emerald:hover {
+            background-color: var(--emerald-dark);
+            border-color: var(--emerald-dark);
+            color: white;
+        }
+
+        .btn-outline-emerald {
+            border-color: var(--emerald);
+            color: var(--emerald);
+        }
+
+        .btn-outline-emerald:hover {
+            background-color: var(--emerald);
+            color: white;
+        }
+
+        /* Cards */
+        .card {
+            border: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Product Card */
+        .product-card .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem 0.5rem 0 0;
+        }
+
+        /* Ratings */
+        .ratings {
+            color: #ffc107;
+        }
+
+        /* Hover Effects */
+        .hover-lift {
+            transition: all 0.2s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Carousel Adjustments */
+        .carousel-inner {
+            padding: 10px 0;
+        }
+        
+        .carousel-item {
+            transition: transform 0.6s ease-in-out;
+        }
+        
+        .carousel-item.active,
+        .carousel-item-next,
+        .carousel-item-prev {
+            display: flex;
+        }
+        
+        .carousel-control-prev, 
+        .carousel-control-next {
+            width: 5%;
+            opacity: 1;
+        }
+        
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-size: 100%, 100%;
+            border-radius: 50%;
+            background-color: var(--emerald);
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Skeleton Loading */
+        .skeleton {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skeleton::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+            animation: shimmer 1.5s infinite;
+        }
+
+        .skeleton-img {
+            background-color: #e0e0e0;
+            width: 100%;
+            height: 200px;
+            border-radius: 0.5rem 0.5rem 0 0;
+        }
+
+        .skeleton-text {
+            background-color: #e0e0e0;
+            height: 12px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+        }
+
+        .skeleton-text:last-child {
+            width: 60%;
+            margin-bottom: 0;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            display: none;
+            z-index: 999;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--emerald);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--emerald-dark);
+        }
+
+        /* Hero Section Adjustments */
+        .hero-section {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        
+        @media (min-width: 992px) {
+            .hero-section {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+            }
+        }
+
+        /* Navbar Adjustments */
+        .navbar {
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer Adjustments */
+        footer a:hover {
+            color: var(--emerald) !important;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 767.98px) {
+            .display-4 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .hero-section .btn:last-child {
+                margin-bottom: 0;
+            }
+            
+            .carousel-control-prev,
+            .carousel-control-next {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">
                 <span class="text-emerald">Yugal</span> Digital Store
@@ -30,9 +271,7 @@
                     <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item ms-lg-3 my-2 my-lg-0">
-                        <a class="btn btn-outline-emerald" href="dashboard.html">Seller Dashboard</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -45,11 +284,13 @@
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <h1 class="display-4 fw-bold mb-4">Discover Premium Digital Products</h1>
                     <p class="lead mb-4">Instant downloads for eBooks, templates, guides and more. Handcrafted by talented creators worldwide.</p>
-                    <a href="products.html" class="btn btn-light btn-lg px-4 me-2">Browse Products</a>
-                    <a href="dashboard.html" class="btn btn-outline-light btn-lg px-4">Sell Your Work</a>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="products.html" class="btn btn-light btn-lg px-4">Browse Products</a>
+                        <a href="#categories" class="btn btn-outline-light btn-lg px-4">Explore Categories</a>
+                    </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="assets/img/hero-bg.jpg" alt="Digital Products" class="img-fluid rounded-3 shadow">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Digital Products" class="img-fluid rounded-3 shadow">
                 </div>
             </div>
         </div>
@@ -62,31 +303,115 @@
                 <h2 class="fw-bold">Featured Products</h2>
                 <a href="products.html" class="btn btn-sm btn-outline-emerald">View All</a>
             </div>
+            
             <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <div class="row g-4">
-                            <!-- Product cards will be loaded via JavaScript -->
-                            <div class="col-md-4">
-                                <div class="card product-card skeleton">
-                                    <div class="card-img-top skeleton-img"></div>
+                        <div class="row g-4 flex-nowrap overflow-hidden">
+                            <div class="col-md-4 col-lg-3">
+                                <div class="card product-card h-100">
+                                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" class="card-img-top" alt="eBook Cover">
                                     <div class="card-body">
-                                        <h5 class="card-title skeleton-text"></h5>
-                                        <p class="card-text skeleton-text"></p>
-                                        <div class="skeleton-text"></div>
+                                        <h5 class="card-title">Digital Marketing Mastery</h5>
+                                        <p class="card-text text-muted">Comprehensive guide to modern digital marketing strategies</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fw-bold text-emerald">$29.99</span>
+                                            <div class="ratings">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Repeat skeleton cards -->
+                            <div class="col-md-4 col-lg-3">
+                                <div class="card product-card h-100">
+                                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Resume Template">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Professional Resume Pack</h5>
+                                        <p class="card-text text-muted">50+ customizable resume templates for all industries</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fw-bold text-emerald">$19.99</span>
+                                            <div class="ratings">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                                <div class="card product-card h-100">
+                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" class="card-img-top" alt="Financial Dashboard">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Excel Finance Dashboard</h5>
+                                        <p class="card-text text-muted">Complete financial tracking system with automated reports</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fw-bold text-emerald">$24.99</span>
+                                            <div class="ratings">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                                <div class="card product-card h-100">
+                                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="UI Kit">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Modern UI Kit</h5>
+                                        <p class="card-text text-muted">300+ components for Figma, Sketch and Adobe XD</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fw-bold text-emerald">$39.99</span>
+                                            <div class="ratings">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                                <div class="card product-card h-100">
+                                    <img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Photography Guide">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Advanced Photography Guide</h5>
+                                        <p class="card-text text-muted">Master professional photography techniques</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fw-bold text-emerald">$27.99</span>
+                                            <div class="ratings">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon bg-emerald rounded-circle" aria-hidden="true"></span>
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon bg-emerald rounded-circle" aria-hidden="true"></span>
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
@@ -104,6 +429,7 @@
                             <div class="card-body text-center py-4">
                                 <i class="fas fa-book-open fa-3x text-emerald mb-3"></i>
                                 <h5 class="mb-0">eBooks</h5>
+                                <p class="text-muted mb-0 small">120+ titles</p>
                             </div>
                         </div>
                     </a>
@@ -114,6 +440,7 @@
                             <div class="card-body text-center py-4">
                                 <i class="fas fa-file-alt fa-3x text-emerald mb-3"></i>
                                 <h5 class="mb-0">Templates</h5>
+                                <p class="text-muted mb-0 small">350+ designs</p>
                             </div>
                         </div>
                     </a>
@@ -124,6 +451,7 @@
                             <div class="card-body text-center py-4">
                                 <i class="fas fa-map fa-3x text-emerald mb-3"></i>
                                 <h5 class="mb-0">Guides</h5>
+                                <p class="text-muted mb-0 small">85+ resources</p>
                             </div>
                         </div>
                     </a>
@@ -134,6 +462,7 @@
                             <div class="card-body text-center py-4">
                                 <i class="fas fa-palette fa-3x text-emerald mb-3"></i>
                                 <h5 class="mb-0">Graphics</h5>
+                                <p class="text-muted mb-0 small">500+ assets</p>
                             </div>
                         </div>
                     </a>
@@ -142,26 +471,180 @@
         </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="About Yugal Digital Store" class="img-fluid rounded-3 shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">About Yugal Digital Store</h2>
+                    <p class="lead mb-4">We connect talented creators with customers who value quality digital products.</p>
+                    <p>Founded in 2023, Yugal Digital Store has grown to become a trusted marketplace for premium digital goods. Our platform offers instant downloads, secure payments, and a seamless shopping experience.</p>
+                    <p>Whether you're looking to enhance your skills with an eBook, streamline your work with templates, or find creative assets for your projects, we've got you covered.</p>
+                    <a href="#" class="btn btn-emerald mt-3">Learn More About Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Trending Products -->
-    <section class="py-5 bg-light">
+    <section class="py-5">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="fw-bold">Trending Now</h2>
                 <a href="products.html" class="btn btn-sm btn-outline-emerald">View All</a>
             </div>
-            <div class="row g-4" id="trendingProducts">
-                <!-- Product cards will be loaded via JavaScript -->
-                <div class="col-md-4 col-lg-3">
-                    <div class="card product-card skeleton">
-                        <div class="card-img-top skeleton-img"></div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1545239351-ef35f43d514b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" class="card-img-top" alt="Notion Template">
                         <div class="card-body">
-                            <h5 class="card-title skeleton-text"></h5>
-                            <p class="card-text skeleton-text"></p>
-                            <div class="skeleton-text"></div>
+                            <h5 class="card-title">Notion Life OS</h5>
+                            <p class="card-text text-muted">All-in-one productivity system for Notion</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-emerald">$34.99</span>
+                                <div class="ratings">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Repeat skeleton cards -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1336&q=80" class="card-img-top" alt="Social Media Pack">
+                        <div class="card-body">
+                            <h5 class="card-title">Social Media Content Pack</h5>
+                            <p class="card-text text-muted">500+ Canva templates for social media</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-emerald">$29.99</span>
+                                <div class="ratings">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Python Course">
+                        <div class="card-body">
+                            <h5 class="card-title">Python Programming Course</h5>
+                            <p class="card-text text-muted">From beginner to advanced Python skills</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-emerald">$49.99</span>
+                                <div class="ratings">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" class="card-img-top" alt="Logo Pack">
+                        <div class="card-body">
+                            <h5 class="card-title">Minimal Logo Pack</h5>
+                            <p class="card-text text-muted">150+ editable logo templates in vector format</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-emerald">$39.99</span>
+                                <div class="ratings">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">What Our Customers Say</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="ratings mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-text mb-4">"The resume templates helped me land my dream job within two weeks of applying. Worth every penny!"</p>
+                            <div class="d-flex align-items-center">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" class="rounded-circle me-3" width="50" height="50" alt="Sarah J.">
+                                <div>
+                                    <h6 class="mb-0">Sarah J.</h6>
+                                    <small class="text-muted">Marketing Professional</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="ratings mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p class="card-text mb-4">"I've purchased several eBooks from Yugal and each one has been incredibly valuable for my business growth."</p>
+                            <div class="d-flex align-items-center">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" class="rounded-circle me-3" width="50" height="50" alt="Michael T.">
+                                <div>
+                                    <h6 class="mb-0">Michael T.</h6>
+                                    <small class="text-muted">Small Business Owner</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="ratings mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-text mb-4">"The UI kit saved me dozens of hours on my latest project. The quality exceeded my expectations."</p>
+                            <div class="d-flex align-items-center">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle me-3" width="50" height="50" alt="Priya K.">
+                                <div>
+                                    <h6 class="mb-0">Priya K.</h6>
+                                    <small class="text-muted">UX Designer</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -173,7 +656,7 @@
                 <div class="col-lg-8 text-center">
                     <h2 class="fw-bold mb-3">Get Exclusive Digital Products</h2>
                     <p class="mb-4">Subscribe to our newsletter for new product alerts, discounts, and creator spotlights.</p>
-                    <form id="newsletterForm" class="row g-2 justify-content-center">
+                    <form class="row g-2 justify-content-center">
                         <div class="col-md-8">
                             <input type="email" class="form-control form-control-lg" placeholder="Your email address" required>
                         </div>
@@ -193,42 +676,51 @@
                 <div class="col-lg-4">
                     <h5 class="fw-bold mb-3"><span class="text-emerald">Yugal</span> Digital Store</h5>
                     <p class="text-muted">Premium digital marketplace for creators and buyers. Instant downloads, secure payments.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-pinterest"></i></a>
+                    </div>
                 </div>
                 <div class="col-lg-2 col-md-4">
                     <h6 class="fw-bold mb-3">Shop</h6>
                     <ul class="list-unstyled">
                         <li class="mb-2"><a href="products.html" class="text-muted text-decoration-none">All Products</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Categories</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Trending</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">New Arrivals</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-4">
-                    <h6 class="fw-bold mb-3">Sell</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="dashboard.html" class="text-muted text-decoration-none">Dashboard</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Become a Seller</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Pricing</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Seller Resources</a></li>
+                        <li class="mb-2"><a href="products.html?category=eBooks" class="text-muted text-decoration-none">eBooks</a></li>
+                        <li class="mb-2"><a href="products.html?category=Templates" class="text-muted text-decoration-none">Templates</a></li>
+                        <li class="mb-2"><a href="products.html?category=Guides" class="text-muted text-decoration-none">Guides</a></li>
+                        <li class="mb-2"><a href="products.html?category=Graphics" class="text-muted text-decoration-none">Graphics</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
                     <h6 class="fw-bold mb-3">Company</h6>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#about" class="text-muted text-decoration-none">About Us</a></li>
                         <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Careers</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Terms of Service</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Press</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="fw-bold mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Help Center</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">FAQs</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Shipping</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Returns</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Order Status</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2">
-                    <h6 class="fw-bold mb-3">Connect</h6>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="text-muted"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-muted"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-muted"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-muted"><i class="fab fa-pinterest"></i></a>
-                    </div>
+                    <h6 class="fw-bold mb-3">Legal</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Terms of Service</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Cookie Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">GDPR</a></li>
+                    </ul>
                 </div>
             </div>
             <hr class="my-4 bg-secondary">
@@ -251,6 +743,47 @@
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script src="assets/js/app.js"></script>
+    <script>
+        // Back to Top Button
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
+            
+            // Initialize carousel
+            const featuredCarousel = new bootstrap.Carousel(document.getElementById('featuredCarousel'), {
+                interval: 5000,
+                wrap: true
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
